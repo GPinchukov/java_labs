@@ -19,7 +19,7 @@ public class Manager {
         this.perDuties = perDuties;
     }
 
-    //getters and setters
+    //getters and  vetter
 
     public String getPerName() {
         return perName;
