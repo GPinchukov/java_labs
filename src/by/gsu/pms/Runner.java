@@ -1,4 +1,4 @@
-import by.gsu.pms.Trip;
+import by.gsu.pms.Employee;
 import by.gsu.pms.Converter;
 
 public class Runner {
@@ -6,20 +6,21 @@ public class Runner {
     public static void main(String[] args) {
 
 
-        Trip[] employees = {
+        EmployeeExpenses[] employees = {
 
-                new Trip("Sakovich", 4500, 1),
-                new Trip("Valenko", 4000, 10),
+                new EmployeeExpenses("Sakovich", 4500, 1),
+                new EmployeeExpenses("Valenko", 4000, 10),
                 null,
-                new Trip("Kirievsky", 5000, 3),
-                new Trip("Ivanov", 10000, 31),
-                new Trip("Urchenko", 5500, 18),
-                new Trip(),
+                new EmployeeExpenses("Kirievsky", 5000, 3),
+                new EmployeeExpenses("Ivanov", 10000, 31),
+                new EmployeeExpenses("Urchenko", 5500, 18),
+                new EmployeeExpenses(),
 
         };
 
 
-        for (Trip employee : employees) {
+
+        for (EmployeeExpenses employee : employees) {
             if (employee != null){
                 employee.show();
                 System.out.println("------------");
@@ -34,14 +35,14 @@ public class Runner {
         System.out.println("Duration = "+(employees[1].getDays()+employees[0].getDays()));
 
 
-        for (Trip employee : employees) {
+        for (EmployeeExpenses employee : employees) {
             System.out.println(employee);
         }
 
 
         int totalExpenses = 0;
 
-        for (Trip employee : employees) {
+        for (EmployeeExpenses employee : employees) {
             if (employee != null) {
                 totalExpenses += employee.getTotal();
             }
@@ -51,7 +52,7 @@ public class Runner {
 
 
         int max = 0;
-        for (Trip employee : employees) {
+        for (EmployeeExpenses employee : employees) {
             if (employee != null && employee.getTotal() > max) {
                 max = employee.getTotal();
             }
@@ -59,9 +60,13 @@ public class Runner {
         System.out.println("Max = " + max);
 
 
-
         Converter newCurrency = new Converter(33,2);
-        System.out.println("Converted = " + newCurrency.convert(employees[3].getTotal()));
+        for (EmployeeExpenses employee : employees) {
+            if (employee != null) {
+                newCurrency.convert(employee);
+                System.out.println("__________");
+            }
+        }
 
     }
 }
