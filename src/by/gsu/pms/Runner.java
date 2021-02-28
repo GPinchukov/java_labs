@@ -8,12 +8,12 @@ public class Runner {
 
         EmployeeExpenses[] employees = {
 
-                new EmployeeExpenses("Sakovich", 4500, 1),
-                new EmployeeExpenses("Valenko", 4000, 10),
+                new EmployeeExpenses("Bolov", 3000, 3),
+                new EmployeeExpenses("Kilov", 2000, 2),
                 null,
-                new EmployeeExpenses("Kirievsky", 5000, 3),
-                new EmployeeExpenses("Ivanov", 10000, 31),
-                new EmployeeExpenses("Urchenko", 5500, 18),
+                new EmployeeExpenses("Molov", 5000, 1),
+                new EmployeeExpenses("Polov", 8000, 20),
+                new EmployeeExpenses("Zolov", 2000, 20),
                 new EmployeeExpenses(),
 
         };
