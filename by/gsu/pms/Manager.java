@@ -10,6 +10,7 @@ public class Manager {
     //constructors
 
     public Manager() {
+
         this("",0,false);
     }
     public Manager(String perName, int perAge, boolean perDuties) {
@@ -19,17 +20,20 @@ public class Manager {
         this.perDuties = perDuties;
     }
 
-    //getters and  vetterrr
+    //getters and  setters
 
     public String getPerName() {
+
         return perName;
     }
 
     public void setPerName(String perName) {
+
         this.perName = perName;
     }
 
     public int getPerAge() {
+
         return perAge;
     }
 
@@ -44,27 +48,5 @@ public class Manager {
     public void setPerDuties(boolean perDuties) {
         this.perDuties = perDuties;
     }
-
-
-    //methods
-
-    public int getTotal() {
-        return RATE * days + transport;
-    }
-
-    public void show() {
-
-        System.out.println("rate = " + RATE);
-        System.out.println("account = " + account);
-        System.out.println("transport = " + transport);
-        System.out.println("days = " + days);
-
-    }
-
-    @Override
-    public String toString() {
-        return RATE + ";" + account + ";" + transport + ";" + days + ";" + getTotal();
-    }
-
 
 }

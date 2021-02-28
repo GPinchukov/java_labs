@@ -1,14 +1,9 @@
-import by.gsu.pms.EmployeeExpenses;
+import by.gsu.pms.Manager;
 
 public class Runner {
 
     public static void main(String[] args) {
 
-        /*
-         * 1)Create an array of 7 objects (the element with index 2 should be empty, i.e. null
-         * the last element of the array should be created by default constructor
-         * other elements should be created by general-purpose constructor)..
-         */
 
         EmployeeExpenses[] employees = {
 
