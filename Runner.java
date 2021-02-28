@@ -5,27 +5,31 @@ public class Runner {
     public static void main(String[] args) {
 
 
-        EmployeeExpenses[] employees = {
+        Manager[] manager = {
 
-                new EmployeeExpenses("Sakovich", 4500, 1),
-                new EmployeeExpenses("Valenko", 4000, 10),
+                new Manager("Sakovich", 45, true),
                 null,
-                new EmployeeExpenses("Kirievsky", 5000, 3),
-                new EmployeeExpenses("Ivanov", 10000, 31),
-                new EmployeeExpenses("Urchenko", 5500, 18),
-                new EmployeeExpenses(),
+                new Manager("Kirievsky", 20, true),
+                new Manager("Ivanov", 30, false),
+                new Manager("Urchenko", 19, true),
+                new Manager("Damov", 45, true),
+                new Manager("Lorov", 54, false),
+                new Manager("Korob", 30, true),
+                new Manager("Binov", 20, true),
+                new Manager(),
 
         };
 
+        int totalPerAge = 0;
+        int totalPerDuties = 0;
 
-        /*
-         *2) Print the array content to the console, using show( ) method.
-         */
 
-        for (EmployeeExpenses employee : employees) {
-            if (employee != null){
-                employee.show();
-                System.out.println("------------");
+        for (Manager manager : managers) {
+            if (manager != null){
+                totalPerAge+=manager.getPerAge();
+                if (manager.isPerDuties()){
+                    totalPerDuties+=1;
+                }
             }
         }
 
