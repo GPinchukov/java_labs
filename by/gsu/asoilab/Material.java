@@ -12,13 +12,13 @@ public class Material {
         this("", 0);
     }
 
-    public Material(String name, int density) {
+    public Material(String Name, int Density) {
         super();
-        this.name = perName;
-        this.density = Density;
+        this.Name = Name;
+        this.Density = Density;
     }
 
-    //getter and setter
+    //Methods
 
     public String getName() {
         return Name;
@@ -35,6 +35,11 @@ public class Material {
     public void setDensity(int density) {
         Density = density;
     }
+
+    public String toString() {
+        return Name + ";" + Density;
+    }
+
 }
 
 
