@@ -51,5 +51,5 @@ public class Vol {
 }
 
     public int getMass() {
-        return ;
+        return Volume*Denasty;
 }
