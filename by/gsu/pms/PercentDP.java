@@ -2,20 +2,20 @@ package by.gsu.pms;
 
 import java.util.Scanner;
 
-public class PercentDiscountPurchase extends Purchase {
+public class PercentDP extends Purchase {
     private double discount;
     private static final int NUMBER_DISCOUNT = 300;
 
-    public PercentDiscountPurchase() {
+    public PercentDP() {
         this("", 0,0,0);
     }
 
-    public PercentDiscountPurchase(String name, int price, int number, double discount) {
+    public PercentDP(String name, int price, int number, double discount) {
         super(name, price, number);
         this.discount = discount;
     }
 
-    public PercentDiscountPurchase(Scanner scanner){
+    public PercentDP(Scanner scanner){
         this(scanner.next(), scanner.nextInt(), scanner.nextInt(), scanner.nextDouble());
     }
 

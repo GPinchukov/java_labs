@@ -1,5 +1,6 @@
+import by.gsu.pms.DisP;
 import by.gsu.pms.Purchase;
-import by.gsu.pms.PurchaseFactory;
+import by.gsu.pms.PurF;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
