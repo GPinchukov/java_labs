@@ -1,55 +1,50 @@
 package by.gsu.asoilab;
 
 public class Vol {
+    private String name;
+    private Material material;
+    private double volume;
 
-
-    private String Name;
-    private String Material;
-    private int Volume;
-
-    //constructors
-
-    public Vol() {
-        this("", "", 0);
+    public Subject(){
+        this("", new Material(), 0);
     }
 
-    public Vol(String Name, String Material, int Volume) {
-        super();
-        this.Name = Name;
-        this.Material = Material;
-        this.Volume = Volume;
+    public Subject(String name, Material material, double volume) {
+        this.name = name;
+        this.material = material;
+        this.volume = volume;
     }
-
-    //getters and setters
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
-    public String getMaterial() {
-        return Material;
+    public Material getMaterial() {
+        return material;
     }
 
-    public void setMaterial(String material) {
-        Material = material;
+    public void setMaterial(Material material) {
+        this.material = material;
     }
 
-    public int getVolume() {
-        return Volume;
+    public double getVolume() {
+        return volume;
     }
 
-    public void setVolume(int volume) {
-        Volume = volume;
+    public void setVolume(double volume) {
+        this.volume = volume;
     }
-    getDensity(){
 
+    @Override
+    public String toString() {
+        return name + ';' + material + ';' + volume + ':' + getMass();
     }
-}
 
-    public int getMass() {
-        return Volume*Denasty;
+    public double getMass(){
+        return material.getDensity() * volume;
+    }
 }

@@ -1,45 +1,38 @@
 package by.gsu.asoilab;
 
 public class Material {
+    private String name;
+    private double density;
 
-
-    private String Name;
-    private int Density;
-
-    //constructors
-
-    public Material() {
-        this("", 0);
+    public Material(){
+        this("",0);
     }
 
-    public Material(String Name, int Density) {
-        super();
-        this.Name = Name;
-        this.Density = Density;
+    public Material(String name, double density) {
+        this.name = name;
+        this.density = density;
     }
-
-    //Methods
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
-    public int getDensity() {
-        return Density;
+    public double getDensity() {
+        return density;
     }
 
-    public void setDensity(int density) {
-        Density = density;
+    public void setDensity(double density) {
+        this.density = density;
     }
 
+    @Override
     public String toString() {
-        return Name + ";" + Density;
+        return name + ';' + density;
     }
-
 }
 
 
