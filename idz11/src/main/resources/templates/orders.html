@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+
+    <title>Orders</title>
+</head>
+
+<body>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Client</th>
+        <th scope="col">Tour</th>
+        <th scope="col">Hotel</th>
+        <th scope="col">Amount of Nights</th>
+        <th scope="col">Price</th>
+        <th scope="col">Date of Tour</th>
+        <th scope="col">Date of Order</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Remove</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.client.name}"></td>
+        <td th:text="${order.tour.name}"></td>
+        <td th:text="${order.hotel.name}"></td>
+        <td th:text="${order.nights}"></td>
+        <td th:text="${T(by.akarumey.project.util.MoneyUtil).formatMoney(order.price)}"></td>
+        <td th:text="${order.tourDate}"></td>
+        <td th:text="${order.orderDate}"></td>
+        <td>
+            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#editModal"
+                    th:data-id="${order.id}" th:data-tour-id="${order.tour.id}" th:data-tour-date="${order.tourDate}"
+                    th:data-hotel-id="${order.hotel.id}">
+                Edit
+            </button>
+        </td>
+        <td>
+            <form th:action="@{/orders/{id}(id=${order.id})}" method="post">
+                <input class="btn btn-outline-dark" type="submit" value="X"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-2">
+            <form action="/">
+                <input class="btn btn-outline-dark w-100" type="submit" value="Main page"/>
+            </form>
+        </div>
+        <div class="col-2">
+            <form action="/make-order">
+                <input class="btn btn-outline-dark w-100" type="submit" value="Make order"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm" action="/make-order" method="post">
+                    <input type="hidden" id="modalId" name="id">
+                    <select class="selectpicker" name="tour.id" id="modalTourId">
+                        <option th:each="tour : ${tours}" th:value="${tour.id}"
+                                th:text="${tour.name}"></option>
+                    </select>
+                    <select class="selectpicker" name="hotel.id" id="modalHotelId">
+                        <option th:each="hotel : ${hotels}" th:value="${hotel.id}"
+                                th:text="${hotel.name}"></option>
+                    </select>
+                    <input type="date" name="tourDate" id="modalTourDateId">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" form="editForm">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script>
+    $('#editModal').on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget);
+        const modal = $(this);
+        modal.find('#modalId').val(button.data('id'));
+        modal.find('#modalTourId').val(button.data('tour-id'));
+        modal.find('#modalHotelId').val(button.data('hotel-id'));
+        modal.find('#modalTourDate').val(button.data('tour-date'));
+    })
+</script>
+
+</html>
