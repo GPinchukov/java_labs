@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Travel Agency</title>
+
+    <style>
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-image: url("https://free4kwallpapers.com/uploads/originals/2017/03/13/beach-resort-wallpaper.jpg");
+            background-size: cover;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            width: 100%;
+            height: 160px;
+            background-color: #69e6e4;
+            opacity: .93;
+        }
+
+        h1 {
+            color: #090808;
+            font-family: 'Vast Shadow', cursive;
+            font-size: 35px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 50px;
+            height: calc(100% - 160px);
+            opacity: .93;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div id="header">
+        <h1 align="center">Welcome to Travel Agency</h1>
+        <h1 align="center">Our address: 52 Mazurova st.</h1>
+        <h1 align="center">Our phone number: +375447210849</h1>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col offset-md-11">
+            <form action="/logout">
+                <input class="btn btn-dark" type="submit" value="Logout"/>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
+        <div class="col">
+            <form action="/tours">
+                <input class="btn btn-outline-dark" type="submit" value="Manage Tours"/>
+            </form>
+        </div>
+        <div class="col">
+            <form action="/hotels">
+                <input class="btn btn-outline-dark" type="submit" value="Manage Hotels"/>
+            </form>
+        </div>
+        <div class="col">
+            <form action="/clients">
+                <input class="btn btn-outline-dark" type="submit" value="Manage Clients"/>
+            </form>
+        </div>
+    </div>
+
+    <hr sec:authorize="hasRole('ROLE_ADMIN')">
+
+    <div class="row justify-content-center">
+        <div class="col-2">
+            <form action="/orders">
+                <input class="btn btn-outline-dark" type="submit" value="Orders"/>
+            </form>
+        </div>
+        <div class="col-2">
+            <form action="/make-order">
+                <input class="btn btn-outline-dark" type="submit" value="Make order"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
